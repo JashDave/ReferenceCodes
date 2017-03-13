@@ -20,6 +20,8 @@ int main(){
                       [var1, var2&] : captures each variables explicitly
     (parameters) : can be skiped if not required, but recommended to be used for clearity.
     -> return-type : can be skiped, and can be determined by compiler, but some compilers may not support this so it's recommended to use is explicitly.
+
+    To invoke the lambda end with (parameters)
   */
 
   /*
@@ -42,11 +44,19 @@ int main(){
   long long l=100;
 
   /* Pass by copy */
-  [=]()->void{ int b = a*2; cout<<b<<endl;}() ;
+  [=]()->void{ int b = a*2; cout<<"First Lambda :"<<b<<endl;}() ;
   // [=]()->void{ a=a+1;} ; //Throws error as a is passed by copy
-  [&]()->void{ a=a+1; cout<<a<<endl; }() ;
-  cout<<a<<endl;
-  [&a,l]()->void{ a=l+1; cout<<a<<endl; }() ;
-  cout<<a<<endl;
+
+  /* Pass by reference */
+  [&]()->void{ a=a+1; cout<<"Second Lambda:"<<a<<endl; } ; // Not invoked as not ended with (parameters)
+  cout<<"A after 2nd Lambda :"<<a<<" <- a is unchanged as 2nd Lambda has not been invoked"<<endl;
+
+  /* Pass by choice */
+  [&a,l]()->void{ a=l+1; cout<<"Third Lambda:"<<a<<endl; }() ;
+  cout<<"A after 3rd Lambda :"<<a<<endl;
+
+  /* Save lambda to be used later */
+  auto sqr = [](int a){return a*a;};
+  cout<<"Saved lambda :"<<sqr(10)<<endl;
   return 0;
 }
