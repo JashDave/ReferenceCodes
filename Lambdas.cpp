@@ -3,6 +3,7 @@
   References:
   http://blog.smartbear.com/c-plus-plus/c11-tutorial-lambda-expressions-the-nuts-and-bolts-of-functional-programming/
   C++11 Tutorial: Lambda Expressions — The Nuts and Bolts of Functional Programming
+  http://en.cppreference.com/w/cpp/language/lambda
 */
 
 
